@@ -1,0 +1,49 @@
+使用阿里云+dns.com( 这是一个老牌的公司，解析非常稳定)
+               A记录(主机记录)
+@   A 116.62.168.205 #主域
+www  A 116.62.168.205 #子域
+
+ttl=600s  因为需要更换别名记录，所以必须要比较小。
+
+               cname记录(别名记录)
+本域
+@ cname www.wuxianshudian.com #主域到子域
+www cname wuxianshudian.com #子域到主域
+别名到top域 香油岛/茶蛋 做引流使用。毕竟内地会英语的人并不是很多。我们从小就接受教育爱国 爱党。学习英语 接触西方的东西就是有毒的腐朽思想思想，就是崇洋媚外，汉奸！这是帝修反文化侵略。人民群众，拿起武器打倒他们。
+@ cname wuxianshudian.top #主域到主域
+@ cname www.wuxianshudian.top #主域到子域
+www cname wuxianshudian.top #主域到主域
+www cname www.wuxianshudian.top #主域到子域
+
+ttl=600s 因为别名记录会影响其他的域名记录解析，所以必须要通过修改或删除记录。那要如果时间太长的话，就影响解析更新。
+
+
+
+              mx(邮件交换记录)
+              注意
+              mx不是别名或a记录，不会有冲突。
+ 本域 到本域
+ @ mx 5 wuxianshudian.com
+ @ mx 10 www.wuxianshudia.com
+ www mx 5 wuxianshudian.com
+ www  mx 10 www.wuxianshudia.com
+  本域 到top域
+ @ mx 5 wuxianshudian.top
+ @ mx 10 www.wuxianshudia.top
+ www mx 5 wuxianshudian.top
+ www  mx 10 www.wuxianshudia.top
+ 
+         TXT (本文)/spf (邮件白名单记录)
+  本域 到本域
+  @ TXT v=spf1 include:wuxianshudian.com ~all
+  @ TXT v=spf1 include:www.wuxianshudian.com ~all
+  www TXT v=spf1 include:wuxianshudian.com ~all
+  www. TXT v=spf1 include:www.wuxianshudian.com ~all
+  本域 到top域
+  @ TXT v=spf1 include:wuxianshudian.top ~all
+  @ TXT v=spf1 include:www.wuxianshudian.top ~all
+  www TXT v=spf1 include:wuxianshudian.top ~all
+  www. TXT v=spf1 include:www.wuxianshudian.top ~all
+  
+
+
